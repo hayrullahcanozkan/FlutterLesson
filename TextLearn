@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+
+class TextLearnView extends StatelessWidget {
+   TextLearnView({super.key, this.username});
+  final String name = 'Can';
+  final String? username;
+  final ProjectKeys keys = ProjectKeys();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Welcome $name,${name.length}',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.end,
+                style: ProjectStyle.welcomeStyle),
+            Text('Welcome $name,${name.length}',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.end,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline3
+                    ?.copyWith(color: ProjectColor.welcomeColor)),
+            Text(username ?? ''),
+             Text(keys.welcome),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProjectStyle {
+  static TextStyle welcomeStyle = TextStyle(
+      wordSpacing: 2,
+      decoration: TextDecoration.lineThrough,
+      fontStyle: FontStyle.italic,
+      color: Colors.green,
+      letterSpacing: 2,
+      fontSize: 16,
+      fontWeight: FontWeight.w600);
+}
+
+class ProjectColor {
+  static Color welcomeColor = Colors.white;
+}
+
+class ProjectKeys {
+  final String welcome = 'Merhaba';
+}
