@@ -1,0 +1,38 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+
+class ScaffoldLearn extends StatelessWidget {
+  const ScaffoldLearn({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      //iskelet 1.tepedeki isim twitter
+      //2. twet alanı
+      //3. butonlar
+      appBar: AppBar(title: Center(child: Text('Twitter'))),
+      body: Center(child: Text('Atılan Twetler')),
+      backgroundColor: Colors.blue,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        onPressed: () {
+          showModalBottomSheet(
+              context: context,
+              builder: (context) => Container(
+                    height: 200,
+                  ));
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      drawer: Drawer(backgroundColor: Colors.black),
+      drawerDragStartBehavior: DragStartBehavior.start,
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search),
+          label: 'Arama',
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favoriler')
+      ]),
+    );
+  }
+}
