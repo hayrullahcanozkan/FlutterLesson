@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class AppBarView extends StatelessWidget {
+  const AppBarView({Key? key}) : super(key: key);
+  final String _title = 'INSTAGRAM';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text(_title)),
+        centerTitle: true,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        automaticallyImplyLeading:
+            false, // otomatik back butonu gelmemesi için,
+
+        leading: Icon(Icons.camera_alt),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.message)),
+          Center(
+            child: CircularProgressIndicator(color: Colors.amber),
+          )
+        ],
+      ),
+    );
+  }
+}
+// Main de theme : 'e eklersek daha kullanışlı olur oop ya benzerdir
+///theme: ThemeData.dark().copyWith(
+//          appBarTheme: AppBarTheme(
+ //       centerTitle: true,
+ //       systemOverlayStyle: SystemUiOverlayStyle.light,
+   //     backgroundColor: Colors.transparent,
+     //   elevation: 0,
+     // ))
