@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+
+class IconLearnView extends StatelessWidget {
+  IconLearnView({Key? key}) : super(key: key);
+  final IconSizes iconSize = IconSizes();
+  final IconColors iconColors = IconColors();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('INSTAGRAM'),
+      ),
+      body: Column(
+        children: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.message_outlined),
+            color: iconColors.froly,
+          ),
+          IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.access_alarm),
+              color: iconColors.froly,
+              iconSize: iconSize.iconSmall)
+        ],
+      ),
+    );
+  }
+}
+
+class IconSizes {
+  final double iconSmall = 40;
+}
+
+class IconColors {
+  final Color froly = Color(0xffED617A);
+}
