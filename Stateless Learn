@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+
+// bUİLD METODU WİDGETLERIN OLUŞTURULMASININ ANA YERİ
+// bu kompananet alınanı gösterme üzerinedir
+class StatelessLearn extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Text(
+            'Can',
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          EmptMethod(),
+          TitleTextWidget(text: 'Can1'),
+          EmptMethod(),
+          TitleTextWidget(
+            text: 'Can2',
+          ),
+          _CustomContainer()
+        ],
+      ),
+    );
+  }
+
+  SizedBox EmptMethod() => SizedBox(
+        height: 10,
+      );
+}
+
+//Eğer sayfaya özel olmasını istiyorsak  başına _ koyarız
+class _CustomContainer extends StatelessWidget {
+  const _CustomContainer({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20), color: Colors.red),
+    );
+  }
+}
+
+class TitleTextWidget extends StatelessWidget {
+  TitleTextWidget({Key? key, required this.text}) : super(key: key);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: Theme.of(context).textTheme.headline4,
+    );
+  }
+}
