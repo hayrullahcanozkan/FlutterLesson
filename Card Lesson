@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+
+class CardLearn extends StatelessWidget {
+  const CardLearn({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Card(
+            margin: MarginCard.Cardmrg,
+            child: SizedBoxp.SizedCard,
+            color: Colors.white,
+            shape: StadiumBorder(),
+          ),
+          Card(
+            margin: MarginCard.Cardmrg,
+            child: SizedBoxp.SizedCard,
+            color: Theme.of(context).colorScheme.error,
+          ),
+          Card(
+            margin: MarginCard.Cardmrg,
+            child: SizedBox(
+              height: 100,
+              width: 300,
+              child: Center(
+                child: Text('Can'),
+              ),
+            ),
+          ),
+          Card(
+            margin: MarginCard.Cardmrg,
+            child: SizedBox(
+              height: 100,
+              width: 300,
+              child: Center(
+                child: Text('Can'),
+              ),
+            ),
+          ),
+          const _CustomCard(child: 
+          SizedBox(
+        height: 100,
+        width: 300,
+        child: Center(
+          child: Text('Can'),
+        ),
+      ),)
+        ],
+      ),
+    );
+  }
+}
+
+class MarginCard {
+  static const Cardmrg = EdgeInsets.all(10);
+}
+
+class SizedBoxp {
+  static const SizedCard = SizedBox(
+    height: 100,
+    width: 400,
+  );
+}
+
+class _CustomCard extends StatelessWidget {
+  final Widget child ;
+
+  const _CustomCard({super.key, required this.child});
+  @override
+  Widget build(BuildContext context) {
+    var roundedRectangleBorder = RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
+    return Card(
+      margin: MarginCard.Cardmrg,
+      
+      shape: roundedRectangleBorder,
+    );
+  }
+}
