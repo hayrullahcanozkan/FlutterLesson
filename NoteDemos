@@ -1,0 +1,98 @@
+import 'package:ders1/101/Image_Learn.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class NoteDemos extends StatelessWidget {
+  const NoteDemos({Key? key}) : super(key: key);
+  final _Title = 'Welcome to Area';
+  final _description = 'ÇOK YAKINDA ';
+  final _Giris = 'Kayıt Oluşturun';
+  final _note = 'Not oluşturun ';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+      ),
+      backgroundColor: Colors.blueGrey[50],
+      body: Padding(
+        padding: PaddingItems.horizontalPadding,
+        child: Column(
+          children: [
+            PngImage(path: ImageWay().Aikido),
+            TitleWidget(Title: _Title),
+            Padding(
+              padding: PaddingItems.verticalPadding,
+              child: Subtitle_Widget(title: _description),
+            ),
+            const Spacer(),
+            _CreateButton(context),
+            TextButton(onPressed: () {}, child: Text(_note))
+          ],
+        ),
+      ),
+    );
+  }
+
+  ElevatedButton _CreateButton(BuildContext context) {
+    return ElevatedButton(
+              onPressed: () {},
+              child: SizedBox(
+                height: CustomHight.buttonNormalHeight,
+                child: Text(_Giris,
+                    style: Theme.of(context).textTheme.headline5),
+              ));
+  }
+}
+
+class Subtitle_Widget extends StatelessWidget {
+  const Subtitle_Widget({
+    Key? key,
+    this.textAlign = TextAlign.center,
+    this.title,
+  }) : super(key: key);
+  final TextAlign textAlign;
+  final title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title * 10,
+      textAlign: textAlign,
+      style: Theme.of(context)
+          .textTheme
+          .subtitle2
+          ?.copyWith(color: Colors.black, fontWeight: FontWeight.w300),
+    );
+  }
+}
+
+class TitleWidget extends StatelessWidget {
+  const TitleWidget({
+    Key? key,
+    required this.Title,
+  }) : super(key: key);
+
+  final String Title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      Title,
+      style: Theme.of(context)
+          .textTheme
+          .headline4
+          ?.copyWith(color: Colors.black, fontWeight: FontWeight.w700),
+    );
+  }
+}
+
+class PaddingItems {
+  static EdgeInsets horizontalPadding = EdgeInsets.symmetric(horizontal: 20);
+  static EdgeInsets verticalPadding = EdgeInsets.symmetric(vertical: 20);
+}
+
+class CustomHight {
+  static const double buttonNormalHeight = 50;
+}
