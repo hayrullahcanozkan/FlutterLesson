@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+
+class CustomWidget extends StatelessWidget with _ColorUtility, _PaddingUtility {
+  // with ile sınıf eklemek sayesinde renkler için farklı sınıflar açmaya gerek kalmıyor
+  CustomWidget({Key? key}) : super(key: key);
+  final String text = 'YEMEK';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+              child: Padding(
+                  padding: normalPadding,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: CustomFootButton(text: text, onPressed: () {
+                      
+                    },),
+                  ))),
+          SizedBox(height: 100),
+          CustomFootButton(text: text,onPressed: () {
+            
+          },),
+        ],
+      ),
+    );
+  }
+}
+
+class _ColorUtility {
+  final Color RedColor = Colors.red;
+  final Color WhiteColor = Colors.white;
+}
+
+class _PaddingUtility {
+  final EdgeInsets normalPadding = EdgeInsets.all(8.0);
+}
+
+class CustomFootButton extends StatelessWidget
+    with _ColorUtility, _PaddingUtility {
+  CustomFootButton({Key? key, required this.text, required this.onPressed}) : super(key: key);
+  final String text;
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style:
+          ElevatedButton.styleFrom(primary: RedColor, shape: StadiumBorder()),
+      child: Center(
+        child: Padding(
+          padding: normalPadding,
+          child: Text(
+            text,
+            style: Theme.of(context)
+                .textTheme
+                .headline4
+                ?.copyWith(color: WhiteColor, fontWeight: FontWeight.w600),
+          ),
+        ),
+      ),
+    );
+  }
+}
