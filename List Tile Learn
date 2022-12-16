@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+
+class ListTileLearn extends StatelessWidget {
+  ListTileLearn({Key? key}) : super(key: key);
+  final imageUrl = 'https://picsum.photos/200';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Card(
+              child: ListTile(
+                title: Image.network(
+                  imageUrl,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                onTap: () {},
+                subtitle: Text(
+                    'How do you use your card'), // ne kadar alan kapladıgını bılmek ıcın conteynır ata ve renk ver
+                leading: Container(
+                    color: Colors.amber,
+                    child: Icon(Icons.monetization_on_sharp)),
+                trailing: SizedBox(width: 20, child: Icon(Icons.chevron_right)),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
