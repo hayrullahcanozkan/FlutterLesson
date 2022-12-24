@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+
+class ColumnRowLearnnn extends StatelessWidget {
+  const ColumnRowLearnnn({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Expanded(
+              flex: 4,
+              child: Container(
+                color: Colors.green,
+              )),
+          Expanded(
+              flex: 2,
+              child: Container(
+                color: Colors.black,
+              )),
+          Expanded(
+              flex: 2,
+              child: Container(
+                color: Colors.blue,
+              )),
+          Expanded(
+              flex: 2,
+              child: Container(
+                color: Colors.amber,
+              )),
+          SizedBox(
+            height: ProjectContainerSize.cardWeight,
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 30,
+                  child: Text('Can'),
+                ),
+                SizedBox(
+                  width: 30,
+                  child: Text('Can'),
+                ),
+                SizedBox(
+                  width: 30,
+                  child: Text('Can'),
+                ),
+                SizedBox(
+                  width: 30,
+                  child: Text('Can'),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class ProjectContainerSize {
+  static const double cardWeight = 100;
+}
