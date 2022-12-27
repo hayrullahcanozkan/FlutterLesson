@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+
+import '../Product/Counter_Button.dart';
+
+class StatefulLearn extends StatefulWidget {
+  StatefulLearn({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulLearn> createState() => _StatefulLearnState();
+}
+
+class _StatefulLearnState extends State<StatefulLearn> {
+  int _countValue = 0;
+  int _counterCustom = 0;
+
+  void _upDateCounter(bool isIncrement) {
+    if (isIncrement) {
+      _countValue = _countValue + 1;
+    } else {
+      _countValue = _countValue - 1;
+    }
+    setState(() {});
+  }
+
+//
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      floatingActionButton: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _DeincrimentButton(),
+          _incrementButton(),
+        ],
+      ),
+      body: Column(
+        children: [
+          Center(
+              child: Text(
+            _countValue.toString(),
+            style: Theme.of(context).textTheme.headline2,
+          )),
+          Placeholder(),
+          CounterHelloButton()// productta yaptık bu sayede sürekli çağrılmamış oldu 
+        ],
+      ),
+    );
+  }
+
+  FloatingActionButton _DeincrimentButton() {
+    print('Cagirildi');
+    return FloatingActionButton(
+      onPressed: () {
+        _upDateCounter(false);
+      },
+      child: Icon(Icons.remove),
+    );
+  }
+
+  Padding _incrementButton() {
+    return Padding(
+      padding: EdgeInsets.only(left: 10),
+      child: FloatingActionButton(
+        onPressed: () {
+          _upDateCounter(true);
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
