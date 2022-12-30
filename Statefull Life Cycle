@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+
+class StateFulLifeCycle extends StatefulWidget {
+  const StateFulLifeCycle({Key? key, required this.message}) : super(key: key);
+  final String message;
+  @override
+  State<StateFulLifeCycle> createState() => _LifeCycleState();
+}
+
+// ilk başta init state çizilir sonra builde gelir
+class _LifeCycleState extends State<StateFulLifeCycle> {
+  String _message = '';
+  late final bool _isodd;
+  @override
+  void didChangeDependencies() {
+    // init stateden sonra çalışır
+    super.didChangeDependencies();
+    print('c');
+  }
+
+  @override
+  void didUpdateWidget(covariant StateFulLifeCycle oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.message == widget.message) {
+      _message = widget.message;
+      _ComputeName();
+      setState(() {});
+    }
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _message = '';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _message = widget.message;
+    _isodd = widget.message.length.isOdd;
+    _ComputeName();
+    print('a');
+  }
+
+  void _ComputeName() {
+    if (_isodd) {
+      _message += 'Çift';
+    } else {
+      _message += 'Tek';
+    }
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text(_message)),
+        body: _isodd
+            ? TextButton(onPressed: () {}, child: Text(_message))
+            : ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _message = 'can';
+                  });
+                },
+                child: Text(_message)));
+  }
+}
