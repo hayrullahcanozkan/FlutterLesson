@@ -21,34 +21,32 @@ class _ColorDemosState extends State<ColorDemos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-          onTap: _ColorIndex,
-          items: [
-            BottomNavigationBarItem(
-                icon: _Colorr(color: Colors.red), label: 'Red'),
-            BottomNavigationBarItem(
-                icon: _Colorr(
-                  color: Colors.blue,
-                ),
-                label: 'Blue'),
-            BottomNavigationBarItem(
-                icon: _Colorr(color: Colors.green), label: 'Green')
-          ]),
+      backgroundColor: _backgroundColor,
+      bottomNavigationBar: BottomNavigationBar(onTap: _colorOnTap, items: [
+        BottomNavigationBarItem(icon: _Colorr(color: Colors.red), label: 'Red'),
+        BottomNavigationBarItem(
+            icon: _Colorr(
+              color: Colors.blue,
+            ),
+            label: 'Blue'),
+        BottomNavigationBarItem(
+            icon: _Colorr(color: Colors.green), label: 'Green')
+      ]),
     );
   }
 
-  void _ColorIndex(value) {
-          if (value == _MyColors.red.index) {
-            print('RED');
-          } else if (value == _MyColors.blue.index) {
-            print('Blue');
-          } else {
-            print('Green');
-          }
-        }
+  void _colorOnTap(int value) {
+    if (value == _MyColors.red.index) {
+      changeBackgroundColor(Colors.red);
+    } else if (value == _MyColors.blue.index) {
+      changeBackgroundColor(Colors.blue);
+    } else if (value == _MyColors.green.index) {
+      changeBackgroundColor(Colors.green);
+    }
+  }
 }
 
-enum _MyColors { red, blue, yellow }
+enum _MyColors { red, blue, green }
 
 class _Colorr extends StatelessWidget {
   const _Colorr({
