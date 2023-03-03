@@ -1,0 +1,49 @@
+import 'package:aratatil/202/model.dart';
+import 'package:flutter/material.dart';
+
+class ModelLearnw extends StatefulWidget {
+  const ModelLearnw({super.key});
+
+  @override
+  State<ModelLearnw> createState() => _ModelLearnwState();
+}
+
+class _ModelLearnwState extends State<ModelLearnw> {
+  var user9 = PostModel8(body: 'a');
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    final user1 = PostModel1()
+      ..userId = 1
+      ..body = 'hc';
+    user1.body = 'sa';
+
+    final user2 = PostModel2(1, 'c', 1, 'can');
+    user2.body = 'c';
+    final user3 = PostModel3(1, 'can', 123, 'ccc');
+    //user3.body = 'can'; final verdik sonradan degısmz
+    final user4 = PostModel4(userId: 1, title: 'c', id: 1, body: 'cc');
+    final user5 = PostModel5(userId: 1, id: 1, title: 'd', body: 'dasd');
+    // servisten data çekıosak en mantıklısı bı
+    final user8 = PostModel8(body: 'a');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            user9 = user9.copyWith(title: 'can');
+            user9.updateBody('Can');
+          });
+        },
+      ),
+      appBar: AppBar(
+        title: Text(user9.title ?? 'Not any data'),
+      ),
+    );
+  }
+}
